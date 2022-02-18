@@ -9,6 +9,9 @@ import bcrypt from 'bcrypt'
 import cookieParser from 'cookie-parser'
 import dotenv, { config } from 'dotenv'
 import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -35,14 +38,14 @@ const database_url = process.env.MONGO_URL
 
 app.use('/', routes)
 
-
 if(process.env.NODE_ENV= 'production'){
-    app.use(express.static(path.resolve("/client/build")))
+    app.use(express.static(path.join( __dirname ,"/client/build")))
 
      app.get("*", (req,response)=>{
-      response.sendFile(path.resolve("client/build/index.html"))
+      response.sendFile(path.resolve(__dirname, 'client', "build", "index.html"))
     })
   } 
+
 
 mongoose.connect(database_url, {useNewUrlParser: true, useUnifiedTopology: true})
  .then(()=> app.listen(PORT, ()=>
