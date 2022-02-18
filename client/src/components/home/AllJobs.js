@@ -69,7 +69,8 @@ const AllJobs=()=>{
           setJobsList(alljobs.data);
           }
           else{
-            alljobs &&
+             console.log(alljobs)
+            
               alljobs.data.map((job)=>(
                 (job.jobType).toLowerCase()===
                   finalSearch ? 
@@ -159,9 +160,9 @@ const AllJobs=()=>{
                         </Box>
                           <Box style={{display:'flex'}}>
                             {
-                              jobs.categories.map(category =>(
+                              {/* jobs.categories.map(category =>(
                                 <Typography className={classes.category}>{category}</Typography>
-                              ))
+                              )) */}
                             } 
                           </Box>
                      
