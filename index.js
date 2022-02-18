@@ -26,6 +26,15 @@ const database_url = 'mongodb+srv://mrunal:mrunal@cluster0.li1jl.mongodb.net/myF
 
 app.use('/', routes)
 
+
+if(process.env.NODE_ENV= 'production'){
+    app.use(express.static(path.join( __dirname ,"/client/build")))
+
+     app.get("*", (req,response)=>{
+      response.sendFile(path.resolve(__dirname, 'client', "build", "index.html"))
+    })
+  } 
+
 mongoose.connect(database_url, {useNewUrlParser: true, useUnifiedTopology: true})
  .then(()=> app.listen(PORT, ()=>
   console.log("Connected succesfully at port no", {PORT})))
