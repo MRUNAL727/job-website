@@ -40,7 +40,7 @@ if(process.env.NODE_ENV= 'production'){
     app.use(express.static(path.resolve("/client/build")))
 
      app.get("*", (req,response)=>{
-      response.sendFile(path.resolve('client', "build", "index.html"))
+      response.sendFile(path.resolve("client/build/index.html"))
     })
   } 
 
