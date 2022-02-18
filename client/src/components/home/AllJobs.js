@@ -159,11 +159,11 @@ const AllJobs=()=>{
                           </Box>
                         </Box>
                           <Box style={{display:'flex'}}>
-                            {
+                            {/* { */}
                               {/* jobs.categories.map(category =>(
                                 <Typography className={classes.category}>{category}</Typography>
                               )) */}
-                            } 
+                            {/* }  */}
                           </Box>
                      
                     </CardContent>
