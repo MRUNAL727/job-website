@@ -69,7 +69,8 @@ const AllJobs=()=>{
           setJobsList(alljobs.data);
           }
           else{
-              alljobs?.data.map((job)=>(
+            alljobs &&
+              alljobs.data.map((job)=>(
                 (job.jobType).toLowerCase()===
                   finalSearch ? 
                  arr.push(job) : console.log('no')

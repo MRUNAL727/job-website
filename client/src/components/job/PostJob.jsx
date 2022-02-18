@@ -97,8 +97,10 @@ const PostJob=()=>{
    
     const submit= async()=>{
       //  await submitCategories()
-      console.log(job)
-        await axios.post('/post-job', job)
+      // console.log(job)
+        await axios.post('/post-job', job).then(navigate('/'))
+         
+
     }
 
     const handleLocation= (event)=>{
