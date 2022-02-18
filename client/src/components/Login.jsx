@@ -21,7 +21,7 @@ const Login= ()=>{
     }
 
     const handleClick=()=>{
-        axios.post('http://localhost:8000/login', loginData).then((response)=>{
+        axios.post('/login', loginData).then((response)=>{
 
           const decoded = jwtDecode(response.data.accessToken)
             dispatch({ type: "LOGIN_START" });

@@ -64,7 +64,7 @@ const AllJobs=()=>{
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/all-jobs`).then((alljobs)=>{
+        axios.get(`/all-jobs`).then((alljobs)=>{
           if(search===''){
           setJobsList(alljobs.data);
           }

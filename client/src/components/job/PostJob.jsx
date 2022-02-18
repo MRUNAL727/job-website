@@ -98,7 +98,7 @@ const PostJob=()=>{
     const submit= async()=>{
       //  await submitCategories()
       console.log(job)
-        await axios.post('http://localhost:8000/post-job', job)
+        await axios.post('/post-job', job)
     }
 
     const handleLocation= (event)=>{

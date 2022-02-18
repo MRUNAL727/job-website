@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 8000
 config('dotenv')
 
 var corsOptions = {
-    origin: 'https://asdjbaksjdbkab.herokuapp.com',
+    origin: 'https://abcdedghijk.herokuapp.com',
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     methods: "GET, PUT, POST, DELETE"
   }
