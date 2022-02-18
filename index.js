@@ -8,19 +8,28 @@ import companyModel from './models/companyModel.js';
 import bcrypt from 'bcrypt'
 import cookieParser from 'cookie-parser'
 import dotenv, { config } from 'dotenv'
+import path from 'path';
 
 const app = express();
 
 const PORT = 8000
-
 config('dotenv')
+
+var corsOptions = {
+    origin: 'https://asdjbaksjdbkab.herokuapp.com',
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    methods: "GET, PUT, POST, DELETE"
+  }
+
+app.use(cors(corsOptions))
+
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
-app.use(cors())
 app.use(cookieParser())
 
 
-const database_url = 'mongodb+srv://mrunal:mrunal@cluster0.li1jl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+
+const database_url = process.env.MONGO_URL
 
 
 
