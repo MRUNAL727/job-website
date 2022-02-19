@@ -27,8 +27,8 @@ function App() {
          <Route path='/profile' element={<Profile />} />
          <Route path='/register' element={<Register />} />
          <Route path='/login/user' element={<UserRegistration />} />
-         {/* <Route path='/post-job' element={(company.company===null) ? <Login />: <PostJob/>} /> */}
-         <Route path='/post-job' element={<PostJob />} />
+         <Route path='/post-job' element={(company.company===null) ? <Login />: <PostJob/>} />
+         {/* <Route path='/post-job' element={<PostJob />} /> */}
          <Route path='/job-details/:_id' element={<JobDetails />} />
          <Route path='/register/company' element={<CompanyRegistration />} />
          <Route path='/login' element={<Login />} />
