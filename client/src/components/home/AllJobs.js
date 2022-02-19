@@ -64,7 +64,7 @@ const AllJobs=()=>{
     }
 
     useEffect(() => {
-        axios.get(`/all-jobs`).then((alljobs)=>{
+        axios.get(`http://localhost:8000/all-jobs`).then((alljobs)=>{
           if(search===''){
           setJobsList(alljobs.data);
           }
@@ -95,6 +95,7 @@ const AllJobs=()=>{
       
       return(
         <Box>
+         <Box >
           <Box style={{display:'flex', margin:'auto', width:'50%', padding:'10px 10px 50px 10px'}}>
               <TextField placeholder='Ex web development' 
                       style={{display:'flex', width:'40%'}}
@@ -102,8 +103,8 @@ const AllJobs=()=>{
                 </TextField>
                 <Typography onClick={handleSubmit}><SearchIcon /></Typography>
           </Box>
-        <Box style={{width:'80%', margin:'auto', color: '#F5F5F5', display:'flex', height:500}}>
-        <Box style={{border:'1px solid #D3D3D3', width:'30%', borderRadius: 2}}>
+        <Box style={{width:'80%', margin:'auto', color: '#F5F5F5', display:'flex'}}>
+        <Box style={{border:'1px solid #D3D3D3', width:'30%', borderRadius: 2, height:500}}>
             <Card>
               <Filters />
             </Card>
@@ -115,7 +116,6 @@ const AllJobs=()=>{
                  jobsList.length ?
                   jobsList.map(jobs=>(
                   
-                  <Box style={{padding:5}}>
                   <Card style={{border: '1px solid #D3D3D3', width:'70%', padding:'5px 0'}}>
                      
                     <Link to={`/job-details/${jobs._id}`} key={jobsList.indexOf(jobs)} style={{textDecoration:'none'}}>
@@ -158,29 +158,26 @@ const AllJobs=()=>{
                               <Typography style={{paddingRight:15, color:'black'}}>{jobs.applyBy}</Typography>
                           </Box>
                         </Box>
-                          <Box style={{display:'flex'}}>
+                          {/* <Box style={{display:'flex'}}> */}
                             {/* { */}
                               {/* jobs.categories.map(category =>(
                                 <Typography className={classes.category}>{category}</Typography>
                               )) */}
                             {/* }  */}
-                          </Box>
+                          {/* </Box> */}
                      
-                    </CardContent>
-                         
-                   </Box>
-                  </Link>
+                      </CardContent>
+                     </Box>
+                    </Link>
                   </Card>
-                  </Box> 
                 ))
-
-                : <Box>No data</Box>
-                 
+                : <Box></Box>
                 } 
             
+        </Box>
         </Box> 
         </Box> 
-           <Box style={{left:'50%', width:'30%', margin: 'auto'}} >
+           <Box style={{left:'50%', width:'30%', margin: 'auto', display:'block'}} >
              <Paginationx style={{left: '50%'}}
                 showPerPage={showPerPage}
                 onPaginationChange={onPaginationChange}

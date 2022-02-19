@@ -64,7 +64,7 @@ const NavBar= ()=>{
       <AppBar className={classes.appBar}> 
 
       <Box >
-        <Typography className={classes.job}>Jobs</Typography>
+        <Typography className={classes.job} onClick={()=>Navigate('/')}>Jobs</Typography>
       </Box>
       <Box className={classes.navElements}>
        
@@ -73,9 +73,9 @@ const NavBar= ()=>{
            <Register open={open}  onClose={handleClose} />
 
 
-        <Link to='/' className={classes.link}>Home</Link>
+        {/* <Link to='/' className={classes.link}>Home</Link> */}
 
-         <Link to='/profile' className={classes.link} >Profile</Link>
+         {/* <Link to='/profile' className={classes.link} >Profile</Link> */}
 
          <Link to='/post-job' className={classes.link}>Post Job</Link>
 

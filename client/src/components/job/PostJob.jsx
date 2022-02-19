@@ -177,7 +177,7 @@ const PostJob=()=>{
             <TextField id="outlined-basic" label="Number of openings" variant="outlined" 
                 onChange={handleChange} name="noOfOpenings"/>
              </Box>  
-
+             <TextField type={'file'} />
              <Box>
              {/* <FormControlLabel control={<Checkbox style={{color:'blue'}} />} label="Work from home"  */}
                 {/* name='workFromHome' onChange={handleChange} /> */}
