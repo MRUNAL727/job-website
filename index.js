@@ -25,11 +25,11 @@ const PORT = process.env.PORT || 8000
 config('dotenv')
 
 var corsOptions = {
-    origin: 'https://abcdedghijk.herokuapp.com/',  
-    // "origin":'http://localhost:3000',
+    // origin: 'https://abcdedghijk.herokuapp.com/',  
+    "origin":'http://localhost:3000',
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     methods: "GET, PUT, POST, DELETE"
-  }
+  } 
 
 app.use(cors(corsOptions))
 
@@ -38,8 +38,8 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(fileupload());
 
-
-
+ 
+  
 
 const database_url = process.env.MONGO_URL
 

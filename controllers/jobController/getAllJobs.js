@@ -9,6 +9,9 @@ import jobsData from '../../models/jobModel.js'
 
     const sendJobs = (jobs) =>{
       jobs.map((m)=>{
+         const imgStr = m.logo.data.toString('base64')
+         console.log(imgStr) 
+         console.log('                                ')
         const data = {
             jobType: m.jobType,
             companyName:m.companyName,
@@ -27,7 +30,8 @@ import jobsData from '../../models/jobModel.js'
             workFromHome:m.workFromHome,
            _id:m._id,
             image:{
-            // logo:(m.logo.data).toString('base64'),
+            // logo: m.logo.data.toString('base64'),
+            logo:imgStr,
             contentType:m.logo.contentType
           }
         }

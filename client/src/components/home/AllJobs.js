@@ -31,7 +31,7 @@ const AllJobs=()=>{
       const getJobs = async()=>{
 
         try{
-        const res = await axios.get( `/all-jobs`)
+        const res = await axios.get( `http://localhost:8000/all-jobs`)
            setJobsList(res.data)
         }catch(error){
           console.log(error)
@@ -40,7 +40,7 @@ const AllJobs=()=>{
        getJobs()
     },[]) 
 
-    console.log(Object.keys(filters).length)
+    console.log(jobsList)
   
      useEffect(() => {
       setFilteredJobs(
