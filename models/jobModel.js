@@ -44,12 +44,17 @@ const jobSchema = new mongoose.Schema({
         require: true,
         unique: true
     },
-    // workFromHome:Boolean,
-    // location:{
-    //     type: String
-    // },
+    workFromHome:Boolean,
+    location:{
+        type: String
+    },
     // categories:[]
-})
+    logo:{
+        data:Buffer,
+        contentType:String
+    }
+   
+}, {timestamps:true})
 
 const jobModel = mongoose.model('job', jobSchema)
 

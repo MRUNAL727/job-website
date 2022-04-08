@@ -1,12 +1,56 @@
 import jobsData from '../../models/jobModel.js'
 
  const getAllJobs = async(req, res)=>{
-    try {
-        const allJobs = await jobsData.find();
-        res.status(200).json(allJobs);
+    const arr=[]
+    // console.log(req.query.type)
 
+    // const type = req.query.type;
+    let jobs=[];
+
+    const sendJobs = (jobs) =>{
+      jobs.map((m)=>{
+        const data = {
+            jobType: m.jobType,
+            companyName:m.companyName,
+            aboutCompany:m.aboutCompany,
+            location:m.location,
+            jobDiscription:m.aboutCompany,
+            skillsRequired:m.skillsRequired,
+            whoCanApply: m.whoCanApply,
+            perks:m.perks,
+            noOfOpenings:m.noOfOpenings,
+            startDate:m.startDate,
+            duration:m.duration,
+            stipend:m.stipend,
+            applyBy:m.applyBy,
+            email:m.email,
+            workFromHome:m.workFromHome,
+           _id:m._id,
+            image:{
+            // logo:(m.logo.data).toString('base64'),
+            contentType:m.logo.contentType
+          }
+        }
+
+        arr.push(data)
+      })
+    }
+    try {
+    //   if(type){ 
+    //     console.log('type '+type)
+    //     jobs =  await jobsData.find({
+    //         jobType:{
+    //         $in: [type],
+    //       },
+          
+    //     });
+    //     await sendJobs(jobs) 
+    //   }
+    //   else{
+        jobs = await jobsData.find();
+         await sendJobs(jobs)
+      res.status(200).send(arr)
     } catch (error) {
-        // console.log("Error" + error)
        res.status(404).json({message:error.message})
     }
 }

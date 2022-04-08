@@ -9,14 +9,19 @@ import JobDetails from './components/job/JobDetails.jsx'
 import CompanyRegistration from './components/register/CompanyRegistration.js'
 import Login from './components/Login'
 import { companyContext } from './context/company/companyContext.js'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { ContextProvider } from './context/company/companyContext';
+import { Navigate } from "react-router-dom";
 
 
 
 function App() {
 
   const company = useContext(companyContext)
+
+  useEffect(()=>{
+      
+  },[company.company])
   // console.log(company.company)
   return (
       <BrowserRouter>
@@ -27,7 +32,7 @@ function App() {
          <Route path='/profile' element={<Profile />} />
          <Route path='/register' element={<Register />} />
          <Route path='/login/user' element={<UserRegistration />} />
-         <Route path='/post-job' element={(company.company===null) ? <Login />: <PostJob/>} />
+         <Route path='/post-job' element={(company.company===null) ? <Login /> : <PostJob/>} />
          {/* <Route path='/post-job' element={<PostJob />} /> */}
          <Route path='/job-details/:_id' element={<JobDetails />} />
          <Route path='/register/company' element={<CompanyRegistration />} />
