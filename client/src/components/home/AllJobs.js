@@ -54,7 +54,7 @@ const AllJobs=()=>{
      },[filters]) 
 
 
-    const [showPerPage, setShowPerPage] = useState(6);
+    const [showPerPage, setShowPerPage] = useState(5);
     const [pagination, setPagination] =  useState({
       start:0,
       end: showPerPage
@@ -131,7 +131,7 @@ console.log(pagination.start, pagination.end)
         <Button style={{color:'blue'}} onClick={handleClear}>Clear filters</Button>
         </Box>
      </Box>
-        <Box style={{width:'80%'}}>
+        <Box style={{width:'80%', marginBottom:10}}>
        
               {  
                 (filteredJobs.length > 0) ? 
