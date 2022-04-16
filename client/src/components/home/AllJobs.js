@@ -54,7 +54,7 @@ const AllJobs=()=>{
      },[filters]) 
 
 
-    const [showPerPage, setShowPerPage] = useState(2);
+    const [showPerPage, setShowPerPage] = useState(6);
     const [pagination, setPagination] =  useState({
       start:0,
       end: showPerPage
