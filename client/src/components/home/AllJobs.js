@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 import axios from 'axios'
-import {Box, Typography, makeStyles, Card, CardContent, TextField, InputLabel, Select, 
+import {Box, Typography, makeStyles, Card, CardContent, TextField, InputLabel, Select, Button,
   MenuItem,  FormControl, Checkbox, Slider} from '@material-ui/core'
 import {Link} from 'react-router-dom';
 import {Home} from '@material-ui/icons'
@@ -31,7 +31,7 @@ const AllJobs=()=>{
       const getJobs = async()=>{
 
         try{
-        const res = await axios.get( `http://localhost:8000/all-jobs`)
+        const res = await axios.get( `/all-jobs`)
            setJobsList(res.data)
         }catch(error){
           console.log(error)
@@ -43,11 +43,11 @@ const AllJobs=()=>{
     console.log(jobsList)
   
      useEffect(() => {
+       filters && 
       setFilteredJobs(
         jobsList.filter((item) =>
           Object.entries(filters).every(([key, value]) =>
             (item[key].toLowerCase()).toString().includes(value)
-           
           )
         )
       );
@@ -59,8 +59,11 @@ const AllJobs=()=>{
       start:0,
       end: showPerPage
     }) 
-
-    const onPaginationChange = (start, end)=>{setPagination({start:start, end:end})}
+console.log(pagination.start, pagination.end)
+    const onPaginationChange = (start, end)=>{
+      setPagination({start:start, end:end})
+      // console.log(event.target.value)
+    }
   
       const handleChange= (event)=>{
       console.log(checkboxValue)
@@ -71,10 +74,14 @@ const AllJobs=()=>{
              setCheckboxValue(true)
            }
         }
-        setFilters(
+        setFilters( 
           (event.target.name === 'workFromHome') ? {...filters, 'workFromHome': checkboxValue}
 
           :{...filters, [event.target.name]: event.target.value})
+      }
+
+      const handleClear=()=>{
+         setFilters({})
       }
       return(
         <>
@@ -86,6 +93,7 @@ const AllJobs=()=>{
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Job type</InputLabel>
                <Select labelId="demo-simple-select-label" id="demo-simple-select" name="jobType" onChange={handleChange}>
+              
 
                <MenuItem value={'web development'}>Web development</MenuItem>
                <MenuItem value={'nodejs'}>Node js</MenuItem>
@@ -119,14 +127,17 @@ const AllJobs=()=>{
           <label>Work from home</label>
           <Checkbox color='primary'  name="workFromHome" onChange={handleChange} value='uhduash'/>
         </Box>
+        <Box>
+        <Button style={{color:'blue'}} onClick={handleClear}>Clear filters</Button>
+        </Box>
      </Box>
         <Box style={{width:'80%'}}>
        
               {  
                 (filteredJobs.length > 0) ? 
-                   filteredJobs.map((job)=> <Job job={job} key={job._id} />) :
+                   filteredJobs.slice(pagination.start, pagination.end).map((job)=> <Job job={job} key={job._id} />) :
                    (Object.keys(filters).length === 0) &&
-                 jobsList && jobsList.map((job)=> <Job job={job} /> )
+                 jobsList && jobsList.slice(pagination.start, pagination.end).map((job)=> <Job job={job} key={job._id} /> )
               }
 
 

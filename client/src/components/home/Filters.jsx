@@ -1,4 +1,4 @@
-import { Typography, InputLabel, Select, MenuItem, makeStyles, Box, FormControl, Checkbox} from "@material-ui/core";
+import { Typography, InputLabel, Select, MenuItem, makeStyles, Box, FormControl, Checkbox, Button} from "@material-ui/core";
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import AllJobs from "./AllJobs";
@@ -68,7 +68,8 @@ const classes = useStyle()
             <label>Work from home</label>
             <Checkbox color='primary' />
         </Box>
-          <AllJobs type={type} />
+        <button>djfhkusd</button>
+          <AllJobs type={type} /> 
         </>
     ); 
 }
