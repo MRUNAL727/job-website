@@ -31,7 +31,7 @@ const JobDetails=()=>{
     const {_id} = useParams();
 
     useEffect(() => {
-        axios.get(`/job-details/${_id}`).then((job)=>{
+        axios.get(`http://localhost:8000/job-details/${_id}`).then((job)=>{
           setJob(job.data);
         })
       },[])

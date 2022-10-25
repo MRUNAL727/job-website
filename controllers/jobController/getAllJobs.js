@@ -10,8 +10,6 @@ import jobsData from '../../models/jobModel.js'
     const sendJobs = (jobs) =>{
       jobs.map((m)=>{
          const imgStr = m.logo.data.toString('base64')
-         console.log(imgStr) 
-         console.log('                                ')
         const data = {
             jobType: m.jobType,
             companyName:m.companyName,

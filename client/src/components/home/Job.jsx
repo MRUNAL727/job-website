@@ -40,15 +40,15 @@ const useStyles = makeStyles({
 const Job = ({ job }) => {
     const classes = useStyles()
   return (
-    <Box style={{marginLeft:20, width:'90%'}}>
+    <Box style={{margin:'0px 0px 25px 20px'}}>
     {  
-        <Card style={{border: '1px solid #D3D3D3', width:'70%', padding:'5px 0'}}>
+        <Card style={{border: '1px solid #D3D3D3', padding:'5px 0px'}}>
 
           
          <Link to={`/job-details/${job._id}`}  style={{textDecoration:'none'}}>
            <Box style={{ width: '100%'}}>
               <CardContent>
-                <Box style={{display:'flex', flexDirection:'row'}}>
+                <Box style={{display:'flex'}}>
                   <Box style={{}}>
                     <Box >
                       <Typography className={classes.jobType}>{job.jobType}</Typography> 
@@ -98,3 +98,5 @@ const Job = ({ job }) => {
 }
 
 export default Job
+
+

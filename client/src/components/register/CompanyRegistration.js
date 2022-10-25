@@ -54,7 +54,7 @@ const UserLogin=()=>{
 
    const createCompany= async()=>{
       try{
-        await axios.post('/register/company', company).then((response)=>{
+        await axios.post('http://localhost:8000/register/company', company).then((response)=>{
            if(response.status ===200){
             //   arr.push('Registered successfully')
             setErr('Registered successfully')

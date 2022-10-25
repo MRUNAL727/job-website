@@ -26,12 +26,13 @@ const AllJobs=()=>{
     const [filters, setFilters] = useState({});
     const [filteredJobs, setFilteredJobs] = useState([]);
     const [checkboxValue, setCheckboxValue] = useState(true);
+    const [inputLabel, setInputLabel] = useState('');
 
     useEffect(() => {
       const getJobs = async()=>{
 
         try{
-        const res = await axios.get( `/all-jobs`)
+        const res = await axios.get( `http://localhost:8000/all-jobs`)
            setJobsList(res.data)
         }catch(error){
           console.log(error)
@@ -47,12 +48,17 @@ const AllJobs=()=>{
       setFilteredJobs(
         jobsList.filter((item) =>
           Object.entries(filters).every(([key, value]) =>
+          item.workFromHome===false ?
             (item[key].toLowerCase()).toString().includes(value)
+             : 
+            item.location ==="false" &&
+            (item[key].toLowerCase()).toString().includes(value) 
+
           )
         )
       );
      },[filters]) 
-
+  // console.log(filters)
 
     const [showPerPage, setShowPerPage] = useState(5);
     const [pagination, setPagination] =  useState({
@@ -75,63 +81,56 @@ console.log(pagination.start, pagination.end)
            }
         }
         setFilters( 
-          (event.target.name === 'workFromHome') ? {...filters, 'workFromHome': checkboxValue}
+          (event.target.name === 'workFromHome') ? {...filters, 'workFromHome': checkboxValue}  
+             && filters.location ? delete filters.location : ''
 
           :{...filters, [event.target.name]: event.target.value})
       }
 
       const handleClear=()=>{
+         setInputLabel('Job Type');
          setFilters({})
       }
       return(
         <>
-        <Box style={{display:'flex', width:'80%', margin:'50px auto' }}>
-        <Box style={{border:'1px solid #D3D3D3', width:'30%', borderRadius: 2, height:500, position:'sticky'}}>
+        <Box style={{display:'flex', width:'60%', margin:'50px auto'}}>
+        {/* <Box> */}
+        <Box style={{border:'1px solid #D3D3D3', flex:1, borderRadius: 2, height:400, position:'sticky', top:40}}>
           <Typography style={{textAlign:'center', padding:'15px 0px', color: 'blue', fontSize:20}}>Filters</Typography>
 
-          <Box sx={{ minWidth: 120 }}>
+          <Box style={{ padding:'10px 43px 15px 30px'}}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Job type</InputLabel>
+               <InputLabel>Job Type</InputLabel>
                <Select labelId="demo-simple-select-label" id="demo-simple-select" name="jobType" onChange={handleChange}>
-              
-
                <MenuItem value={'web development'}>Web development</MenuItem>
                <MenuItem value={'nodejs'}>Node js</MenuItem>
                <MenuItem value={'backend development'}>Backend development</MenuItem>
                <MenuItem value={'full stack development'}>Full stack development</MenuItem>
-
-
                </Select>
             </FormControl>
           </Box>
-{/* <Box style={{width:'75%', border:'1px solid black', height:100, margin:10}}> */}
 
-{/* </Box> */}
-          <InputLabel >Location</InputLabel>
-           <Select onChange={handleChange} className={classes.category} name="location">
+          <Box style={{padding:'0px 25px 10px 25px', width:'100%'}}>
+          {/* <FormControl fullWidth> */}
+          <InputLabel>Location</InputLabel>
+           <Select labelId="demo-simple-select-label" id="demo-simple-select" onChange={handleChange} className={classes.category} name="location">
             <MenuItem value='pune'>Pune</MenuItem>
             <MenuItem value='mumbai'>Mumbai</MenuItem>
             <MenuItem value='delhi'>Delhi</MenuItem>
           </Select>
+          {/* </FormControl> */}
+          </Box>
          
-          {/* <Box sx={{ width: 300 }}>
-         <Slider
-            getAriaLabel={() => 'Minimum stipend'}
-            // value={value}
-            onChange={handleChange}
-            valueLabelDisplay="auto"
-            // getAriaValueText={valuetext}
-      />
-    </Box> */}
-        <Box>
+        <Box style={{padding:'0px 25px 10px 25px' }} >
           <label>Work from home</label>
           <Checkbox color='primary'  name="workFromHome" onChange={handleChange} value='uhduash'/>
         </Box>
-        <Box>
-        <Button style={{color:'blue'}} onClick={handleClear}>Clear filters</Button>
+        <Box style={{width:'40%', margin:'auto', bottom:'10px'}}>
+        <Button style={{color:'blue',}} onClick={handleClear}>Clear filters</Button>
         </Box>
      </Box>
-        <Box style={{width:'80%', marginBottom:10}}>
+    {/* </Box> */}
+        <Box style={{flex:2, marginBottom:10}}>
        
               {  
                 (filteredJobs.length > 0) ? 
@@ -146,7 +145,6 @@ console.log(pagination.start, pagination.end)
                 showPerPage={showPerPage}
                 onPaginationChange={onPaginationChange}
                 total={jobsList.length}
-
                 />
           </Box>
         </Box>

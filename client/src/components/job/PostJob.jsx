@@ -144,7 +144,7 @@ const PostJob=()=>{
 
       
          appendData()
-        await axios.post('/post-job', formData)
+        await axios.post('http://localhost:8000/post-job', formData)
         // .then(navigate('/'))
          
 
