@@ -1,0 +1,45 @@
+.footer {
+  width: 100%;
+  /* background-color: #f5f5f5; */
+  border:1px solid #c2c1c1;
+}
+
+.container {
+  display: flex;
+  width: 40%;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.left {
+  margin-left: 100px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+}
+.btn {
+  font-size: 20px;
+  background-color: rgb(46, 46, 253);
+  border: none;
+  color: white;
+  padding: 10px;
+  width: 200px;
+}
+
+.icons {
+  -webkit-box-shadow: -4px 0px 0px -1px rgba(92, 87, 92, 1);
+  -moz-box-shadow: -4px 0px 0px -1px rgba(92, 87, 92, 1);
+  box-shadow: -4px 0px 0px -1px rgba(92, 87, 92, 1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+}
+
+.icon {
+  padding: 5px;
+}

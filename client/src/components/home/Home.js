@@ -3,6 +3,7 @@ import Filters from './Filters';
 import {Box, Typography, makeStyles, Card, CardContent, TextField} from '@material-ui/core'
 import {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
+import Footer from '../footer/Footer';
 
 
 const useStyles = makeStyles({
@@ -24,6 +25,7 @@ const Home=()=>{
             //       {/* </Box> */}
                    <Box style={{width:'100%'}}>
                      <AllJobs /> 
+                     <Footer />
                    </Box>
               //  {/* </Box>  */}
             // </Box> 

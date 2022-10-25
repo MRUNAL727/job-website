@@ -3,7 +3,9 @@ import {Box, Typography, makeStyles, Button, AppBar, Menu, MenuItem} from '@mate
 import { useState } from 'react';
 import Register from '../register/Register.js'
 import clsx from 'clsx'
+import BarChartIcon from '@material-ui/icons/BarChart';
 import { useNavigate } from 'react-router';
+import './navbar.css'
 
 const useStyles = makeStyles({
     
@@ -36,10 +38,10 @@ const useStyles = makeStyles({
     
     },
 
-    job:{
-      fontSize:30,
-      marginLeft:100
-    }
+    // job:{
+    //   fontSize:30,
+    //   marginLeft:100
+    // }
 
 
 })
@@ -63,8 +65,9 @@ const NavBar= ()=>{
   return(
       <AppBar className={classes.appBar}> 
 
-      <Box >
-        <Typography className={classes.job} onClick={()=>Navigate('/')}>Jobs</Typography>
+      <Box className='logo' onClick={()=>Navigate('/')}>
+        <BarChartIcon style={{fontSize:'large'}}/>
+        <Typography style={{fontSize:30}}>Jobs</Typography>
       </Box>
       <Box className={classes.navElements}>
        
