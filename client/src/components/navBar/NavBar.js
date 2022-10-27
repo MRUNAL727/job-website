@@ -20,18 +20,20 @@ const useStyles = makeStyles({
    
     appBar:{
       display:'flex', 
-      border: '1px solid grey', 
-      background:'blue',
+      height:'80px',
+      alignItems:'center',
+      // border: '1px solid grey', 
+      background:'#4fadff',
       flexDirection: 'row',
       margin: '5px 10px',
       padding:5,
       position: 'static',
-      opacity:0.8
+      // opacity:0.8
     },
 
     link:{
       textDecoration:'none',
-      justifyContent: 'center',
+      
       fontSize: 22,
       padding:7,
       color:'white'
@@ -66,8 +68,8 @@ const NavBar= ()=>{
       <AppBar className={classes.appBar}> 
 
       <Box className='logo' onClick={()=>Navigate('/')}>
-        <BarChartIcon style={{fontSize:'large'}}/>
-        <Typography style={{fontSize:30}}>Jobs</Typography>
+        <BarChartIcon style={{fontSize:30}}/>
+        <Typography style={{fontSize:30, fontWeight:'bold'}}>Jobs</Typography>
       </Box>
       <Box className={classes.navElements}>
        

@@ -22,7 +22,7 @@ const Home=()=>{
             //         {/* <Card> */}
             //          {/* <Filters /> */}
             //         {/* </Card> */}
-            //       {/* </Box> */}
+            //       {/* </Box> */} 
                    <Box style={{width:'100%'}}>
                      <AllJobs /> 
                      <Footer />

@@ -9,19 +9,19 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="container">
+      <div className="footerContainer">
         <div className="left">
           <div className='name'>
-            <BarChartIcon  className='icon'/>
+            <BarChartIcon  className='socialIcons'/>
             <h2>Jobs</h2>
           </div>
           <button className="btn">Contact us</button>
         </div>
         <div className="icons">
-          <InstagramIcon className="icon" />
-          <FacebookIcon className="icon" />
-          <GitHubIcon className="icon" />
-          <TwitterIcon className="icon" />
+          <InstagramIcon className="socialIcons" />
+          <FacebookIcon className="socialIcons" />
+          <GitHubIcon className="socialIcons" />
+          <TwitterIcon className="socialIcons" />
         </div>
       </div>
     </div>

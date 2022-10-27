@@ -7,7 +7,7 @@ import UserRegistration from './components/register/UserRegistration.js'
 import PostJob from './components/job/PostJob.jsx'
 import JobDetails from './components/job/JobDetails.jsx'
 import CompanyRegistration from './components/register/CompanyRegistration.js'
-import Login from './components/Login'
+import Login from './components/login/Login'
 import { companyContext } from './context/company/companyContext.js'
 import { useContext, useEffect } from 'react'
 import { ContextProvider } from './context/company/companyContext';

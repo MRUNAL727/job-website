@@ -2,5 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid black; */
+    margin: 1px 25px;
+    cursor:pointer;
 }
