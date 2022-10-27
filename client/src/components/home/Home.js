@@ -4,6 +4,8 @@ import {Box, Typography, makeStyles, Card, CardContent, TextField} from '@materi
 import {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 import Footer from '../footer/Footer';
+import Header from '../header/Header';
+import Advertise from '../advertise/Advertise';
 
 
 const useStyles = makeStyles({
@@ -24,7 +26,11 @@ const Home=()=>{
             //         {/* </Card> */}
             //       {/* </Box> */} 
                    <Box style={{width:'100%'}}>
-                     <AllJobs /> 
+                     {/* <AllJobs />  */}
+                     <Header />
+                     <button>Search Jobs</button>
+                     <Advertise />
+                     <button>Search Jobs</button>
                      <Footer />
                    </Box>
               //  {/* </Box>  */}
