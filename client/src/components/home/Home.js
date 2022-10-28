@@ -28,9 +28,7 @@ const Home=()=>{
                    <Box style={{width:'100%'}}>
                      {/* <AllJobs />  */}
                      <Header />
-                     <button>Search Jobs</button>
                      <Advertise />
-                     <button>Search Jobs</button>
                      <Footer />
                    </Box>
               //  {/* </Box>  */}

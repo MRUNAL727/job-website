@@ -21,11 +21,12 @@ const useStyles = makeStyles({
     appBar:{
       display:'flex', 
       height:'80px',
+      width:'99%',
       alignItems:'center',
       // border: '1px solid grey', 
       background:'#4fadff',
       flexDirection: 'row',
-      margin: '5px 10px',
+      margin: '5px auto',
       padding:5,
       position: 'static',
       // opacity:0.8

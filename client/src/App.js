@@ -12,7 +12,7 @@ import { companyContext } from './context/company/companyContext.js'
 import { useContext, useEffect } from 'react'
 import { ContextProvider } from './context/company/companyContext';
 import { Navigate } from "react-router-dom";
-
+import AllJobs from './components/home/AllJobs'
 
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
        <NavBar />
         <Routes>
          <Route exact path='/' element={<Home />}/>
+         <Route path='/all-jobs' element={<AllJobs/>} />
          <Route path='/profile' element={<Profile />} />
          <Route path='/register' element={<Register />} />
          <Route path='/login/user' element={<UserRegistration />} />
