@@ -34,6 +34,8 @@ const useStyles = makeStyles({
     margin: '5px auto',
     padding: 5,
     position: 'static',
+    boxShadow: '0px 4px 10px rgba(0 76 255 / 13%)',
+
     // opacity:0.8
   },
 

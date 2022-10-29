@@ -1,7 +1,10 @@
 .advertise{
   display: flex;
+  flex-direction: column;
   justify-content:center;
-  margin-top: 40px ;
+  align-items: center;
+  /* margin-top: 40px ; */
+  padding: 20px;
 }
 .links{
   text-decoration: none; 

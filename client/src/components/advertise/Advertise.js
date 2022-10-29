@@ -2,7 +2,6 @@ import React from 'react';
 import './advertise.css';
 import { useNavigate, Link } from 'react-router-dom';
 
-
 const Advertise = () => {
   const navigate = useNavigate();
 
@@ -28,22 +27,30 @@ const Advertise = () => {
           </div>
         </div>
       </div> */}
-      {/* <h1>Search for a Job or post Job</h1> */}
-      <div style={{display:'flex', width:'50%', justifyContent:'space-evenly'}}>
-        <Link to="/all-jobs" className='links'>
+      <h1>Search for a Job or post Job</h1>
+      <div
+        style={{
+          display: 'flex',
+          width: '50%',
+          justifyContent: 'space-evenly',
+          boxShadow: '0px 4px 10px rgba(0 76 255 / 10%)',
+          margin: 30,
+          padding:20
+        }}
+      >
+        <Link to="/all-jobs" className="links">
           <div className="option">
-            <h2 style={{textAlign: 'center'}}>Want a job?</h2>
-            <button className='adButtons'>Search Job</button>
+            <h2 style={{ textAlign: 'center' }}>Want a job?</h2>
+            <button className="adButtons">Search Job</button>
           </div>
         </Link>
 
-        <Link to="/post-job" className='links'>
+        <Link to="/post-job" className="links">
           <div className="option">
-            <h2 style={{textAlign: 'center'}}>Want to hire??</h2>
-            <button className='adButtons'>Post Job</button>
+            <h2 style={{ textAlign: 'center' }}>Want to hire??</h2>
+            <button className="adButtons">Post Job</button>
           </div>
         </Link>
-       
       </div>
     </div>
   );
