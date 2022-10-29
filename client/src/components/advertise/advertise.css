@@ -1,50 +1,24 @@
-.advertise {
+.advertise{
   display: flex;
-  justify-content: center;
-  /* border: 1px solid black; */
-  height: auto;
+  justify-content:center;
+  margin-top: 40px ;
 }
-.jobs {
-  display: flex;
-  width: 60%;
-  justify-content: space-evenly;
-}
-
-.box {
-  display: flex;
-  flex: 1;
-  padding:10px;
-  margin: 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-
-.imgDiv {
-  padding: 10px;
-}
-
-.images {
-  width: 300px;
-  height: auto;
-  border:1px solid rgb(226, 226, 226);
-}
-
-.textDiv {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.advertiseButtons {
-  color: #4fadff;
-  background-color: white;
-  border: 1px solid #4fadff;
-  font-size: 20px;
-  padding: 5px 10px;
+.links{
+  text-decoration: none; 
+  color:inherit; 
   border-radius: 5px;
-  cursor: pointer;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  padding:20px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.adButtons{
+  color:white;
+  background-color:#4fadff;
+  border:none;
+  width:200px;
+  font-size:20px;
+  padding:5px;
+  border-radius: 5px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  
 }

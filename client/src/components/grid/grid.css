@@ -1,14 +1,28 @@
 .grids{
+    width: 50%;
+    margin:auto;
+    height:380px;
     display: flex;
-    width: 100%;
-    margin: 30px 0px;
-    justify-content:space-evenly;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color:white;
+    /* border:1px solid black; */
+    position: absolute;
+    right:90px;
+    top:-20px;
+    padding:10px 0px;
+    border-radius: 5px;
+    box-shadow:0px 4px 10px rgba(0, 76, 255, 0.116);
 }
 
 .grid{
-    padding: 10px 20px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    position:relative;
+    padding: 10px 10px;
+    width:250px;
+    margin:20px 10px;
+    background-color: white;
+    border-radius: 5px;
+
+    /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
 }
 
 .viewMore{
