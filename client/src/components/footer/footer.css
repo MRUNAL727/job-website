@@ -1,8 +1,9 @@
 .footer {
   width: 100%;
   background-color: #4fadff;
-  position: absolute;
+  position: fixed;
   bottom:0;
+  padding-bottom: 20px;
   /* border:1px solid #c2c1c1; */
 }
 
@@ -39,8 +40,8 @@
   -moz-box-shadow: -4px 0px 0px -1px rgba(92, 87, 92, 1);
   box-shadow: -4px 0px 0px -1px rgba(92, 87, 92, 1);
   padding: 20px;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   margin-right: 100px;
 }
 

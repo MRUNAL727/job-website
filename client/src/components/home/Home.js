@@ -6,7 +6,7 @@ import axios from 'axios';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import Advertise from '../advertise/Advertise';
-
+import Grid from '../grid/Grid'
 
 const useStyles = makeStyles({
    
@@ -29,6 +29,7 @@ const Home=()=>{
                      {/* <AllJobs />  */}
                      <Header />
                      <Advertise />
+                     <Grid />
                      <Footer />
                    </Box>
               //  {/* </Box>  */}

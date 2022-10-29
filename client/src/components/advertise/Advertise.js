@@ -11,7 +11,7 @@ const Advertise = () => {
       <div className="jobs">
         <div className="box">
           <div className="imgDiv">
-            <img src="images/jobMan.png" className="images" />
+            <img src="images/job.jpg" className="images" />
           </div>
           <div className="textDiv">
             <h2 style={{ textAlign: 'center' }}>Want a job?</h2>
@@ -20,7 +20,7 @@ const Advertise = () => {
         </div>
         <div className='box'>
           <div className="imgDiv">
-            <img src="images/jobMan.png" className="images" />
+            <img src="images/jobHire.jpeg" className='images' />
           </div>
           <div className="textDiv">
             <h2 style={{ textAlign: 'center' }}>Want to hire?</h2>
