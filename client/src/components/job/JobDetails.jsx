@@ -69,7 +69,7 @@ const JobDetails=()=>{
                                <Typography style={{paddingRight:15, color:'black'}}>{job.duration}</Typography>
                            </Box>
                            <Box className={classes.smallBox}>
-                               <Typography style={{color: 'grey'}}>Stipend</Typography>
+                               <Typography style={{color: 'grey'}}>Salary</Typography>
                                <Typography style={{paddingRight:15, color:'black'}}>{job.stipend}</Typography>
                            </Box>
                            <Box className={classes.smallBox}>

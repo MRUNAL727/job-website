@@ -18,7 +18,7 @@ const Grid = () => {
         borderRadius: '16px 6px'
       }}
     >
-      <div>
+      <div style={{padding:'10px 50px'}}>
         <img src="https://static.naukimg.com/s/0/0/i/role-collection.png" />
         <h2>Discover jobs across popular roles</h2>
       </div>
@@ -28,11 +28,11 @@ const Grid = () => {
             to="/all-jobs"
             style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            <div style={{}}>
-              <h3 style={{ margin: 5 }}>FullStack Development</h3>
+            <div style={{border:'1px solid #00000024', borderRadius:5}}>
+              <h3 style={{ margin: 10 }}>FullStack Development</h3>
               <p
                 style={{
-                  margin: 5,
+                  margin: '5px 10px',
                   display: 'flex',
                   alignItems: 'center',
                   color: 'grey',
@@ -50,11 +50,11 @@ const Grid = () => {
             to="/all-jobs"
             style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            <div style={{}}>
-              <h3 style={{ margin: 5 }}>FullStack Development</h3>
+            <div style={{border:'1px solid #00000024', borderRadius:5}}>
+              <h3 style={{ margin: 10 }}>FullStack Development</h3>
               <p
                 style={{
-                  margin: 5,
+                  margin: '5px 10px',
                   display: 'flex',
                   alignItems: 'center',
                   color: 'grey',
@@ -72,11 +72,11 @@ const Grid = () => {
             to="/all-jobs"
             style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            <div style={{}}>
-              <h3 style={{ margin: 5 }}>FullStack Development</h3>
+            <div style={{border:'1px solid #00000024', borderRadius:5}}>
+              <h3 style={{ margin: 10 }}>FullStack Development</h3>
               <p
                 style={{
-                  margin: 5,
+                  margin: '5px 10px',
                   display: 'flex',
                   alignItems: 'center',
                   color: 'grey',
@@ -94,11 +94,11 @@ const Grid = () => {
             to="/all-jobs"
             style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            <div style={{}}>
-              <h3 style={{ margin: 5 }}>FullStack Development</h3>
+            <div style={{border:'1px solid #00000024', borderRadius:5}}>
+              <h3 style={{ margin: 10 }}>FullStack Development</h3>
               <p
                 style={{
-                  margin: 5,
+                  margin: '5px 10px',
                   display: 'flex',
                   alignItems: 'center',
                   color: 'grey',
@@ -116,11 +116,11 @@ const Grid = () => {
             to="/all-jobs"
             style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            <div style={{}}>
-              <h3 style={{ margin: 5 }}>FullStack Development</h3>
+            <div style={{border:'1px solid #00000024', borderRadius:5}}>
+              <h3 style={{ margin: 10 }}>FullStack Development</h3>
               <p
                 style={{
-                  margin: 5,
+                  margin: '5px 10px',
                   display: 'flex',
                   alignItems: 'center',
                   color: 'grey',
@@ -138,11 +138,11 @@ const Grid = () => {
             to="/all-jobs"
             style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            <div style={{}}>
-              <h3 style={{ margin: 5 }}>FullStack Development</h3>
+            <div style={{border:'1px solid #00000024', borderRadius:5}}>
+              <h3 style={{ margin: 10 }}>FullStack Development</h3>
               <p
                 style={{
-                  margin: 5,
+                  margin: '5px 10px',
                   display: 'flex',
                   alignItems: 'center',
                   color: 'grey',

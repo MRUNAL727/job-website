@@ -1,118 +1,178 @@
-import {TextField, Box, makeStyles, Typography, Button}  from '@material-ui/core';
+import {
+  TextField,
+  Box,
+  makeStyles,
+  Typography,
+  Button,
+} from '@material-ui/core';
 import clsx from 'clsx';
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import BusinessIcon from '@material-ui/icons/Business';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
-const useStyles = makeStyles({
+const UserLogin = () => {
+  const [err, setErr] = useState('');
 
-  box:{
-     width: '30%',
-     margin: 'auto',
-     border: '1px solid black',
-      
-  },
+  const [company, setCompany] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    password: '',
+  });
+  const navigate = useNavigate();
+  const handleChange = (event) => {
+    setCompany({ ...company, [event.target.name]: event.target.value });
+  };
 
-   textField:{
-    width: 300,
-    margin: '25px 5px 10px 20px',
-    fontSize: 150
-    
-   },
-
-   heading:{
-     textAlign: 'center',
-     fontSize: 50,
-     marginTop: 20
-   },
- 
-   formContainer:{
-    //  border: '1px solid black',
-     marginLeft: 20,
-     
-   },
-   name:{
-    //  width: 250,
-   }
-})
-
-const UserLogin=()=>{
-
-   const [err, setErr] = useState('');
-
-   const [company, setCompany] = useState({
-       name: '',
-       email:'',
-       phone:'',
-       password:''
-   });
-   const classes = useStyles();
-    const navigate = useNavigate();
-   const handleChange=(event)=>{
-      setCompany({...company, [event.target.name]: event.target.value})
-   }
-
-   const createCompany= async()=>{
-      try{
-        await axios.post('http://localhost:8000/register/company', company).then((response)=>{
-           if(response.status ===200){
+  const createCompany = async () => {
+    try {
+      await axios
+        .post('http://localhost:8000/register/company', company)
+        .then((response) => {
+          if (response.status === 200) {
             //   arr.push('Registered successfully')
-            setErr('Registered successfully')
-           navigate('/') 
-           }
-          
+            setErr('Registered successfully');
+            navigate('/');
           }
-        ) 
-      }
-      catch(err){
-         setErr("Please enter correct details")
-         console.log("error")
-      }
-   }
+        });
+    } catch (err) {
+      setErr('Please enter correct details');
+      console.log('error');
+    }
+  };
 
-  return(
-      <Box className={classes.box}>
-         <Typography className={classes.heading}>Company Registration</Typography>
-         
-         <Box className={classes.formContainer}>
+  return (
+    <Box
+      style={{
+        width: '50%',
+        margin: '50px auto',
+        boxShadow: '0px 4px 10px rgba(0, 76, 255, 0.341)',
+      }}
+    >
+      <Box
+        style={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Box
+          style={{
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
 
-            <Box>
-              <TextField label="Company name" variant="standard"
-                 required className={clsx(classes.textField, classes.name)} 
-                 onChange={handleChange} name="name"/>
-             
-              
-            </Box>
+            color: '#4fadff',
 
-            <Box>
-               <TextField label="Email" variant="standard"  
-                  required className={clsx(classes.textField)}
-                  onChange={handleChange} name="email"
-                />
+            marginTop: 20,
+          }}
+        >
+          <BusinessIcon
+            style={{ fontSize: 30, marginTop: 20, padding: '0px 10px' }}
+          ></BusinessIcon>
 
-               <TextField label="Number" variant="standard" type="number" 
-                  required className={clsx(classes.textField)}
-                  onChange={handleChange} name="phone"
-               />
+          <Typography style={{ fontSize: 30, marginTop: 20 }}>
+            Company Registration
+          </Typography>
+        </Box>
 
-               <TextField label="Password" variant="standard" type="password" 
-                  required className={clsx(classes.textField)}
-                  onChange={handleChange} name="password"
-                />
+        <Box
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '50%',
+            justifyContent: 'center',
+          }}
+        >
+          <TextField
+            label="Company name"
+            variant="outlined"
+            required
+            onChange={handleChange}
+            name="name"
+            style={{
+              margin: 20,
+              boxShadow: '0px 4px 10px rgba(0, 76, 255, 0.17)',
+            }}
+          />
 
-               
-            </Box>
-            <Button onClick={createCompany}>
-               <Typography>Submit</Typography>
-            </Button>
-         </Box>
-          
-           
-                <Typography>{err}</Typography>
-             
-          
-     </Box>
-  )
-}
+          <TextField
+            label="Email"
+            variant="outlined"
+            required
+            onChange={handleChange}
+            name="email"
+            style={{
+              margin: 20,
+              boxShadow: '0px 4px 10px rgba(0, 76, 255, 0.17)',
+            }}
+          />
+
+          <TextField
+            label="Number"
+            variant="outlined"
+            type="number"
+            required
+            onChange={handleChange}
+            name="phone"
+            style={{
+              margin: 20,
+              boxShadow: '0px 4px 10px rgba(0, 76, 255, 0.17)',
+            }}
+          />
+
+          <Box
+            style={{
+              display: 'flex',
+              padding: '5px 14px',
+
+              alignItems: 'center',
+              margin: 20,
+              border: '1px solid #8080806e',
+              borderRadius: 5,
+              boxShadow: '0px 4px 10px rgba(0, 76, 255, 0.17)',
+            }}
+          >
+            <TextField
+              label="Password"
+              // variant="outlined"
+              type="password"
+              required
+              onChange={handleChange}
+              name="password"
+              style={{
+                outline: 'none',
+                border: 'none',
+              }}
+            />
+            <VisibilityOffIcon />
+          </Box>
+
+          <Button
+            onClick={createCompany}
+            style={{
+              backgroundColor: '#4fadff',
+              color: 'white',
+
+              borderRadius: 5,
+              padding: '5px 30px',
+              margin: '20px auto',
+              boxShadow: '0px 4px 10px rgba(0, 76, 255, 0.17)',
+            }}
+          >
+            <Typography>Submit</Typography>
+          </Button>
+        </Box>
+
+        <Typography>{err}</Typography>
+      </Box>
+    </Box>
+  );
+};
 
 export default UserLogin;

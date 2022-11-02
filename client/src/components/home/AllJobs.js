@@ -23,6 +23,8 @@ import Paginationx from './Pagination.js';
 import { useLocation } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import Job from './Job';
+import Tooltip from '@material-ui/core/Tooltip';
+import PropTypes from 'prop-types';
 
 const useStyle = makeStyles({
   category: {
@@ -30,6 +32,21 @@ const useStyle = makeStyles({
   },
 });
 
+function ValueLabelComponent(props) {
+  const { children, open, value } = props;
+
+  return (
+    <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
+      {children}
+    </Tooltip>
+  );
+}
+
+ValueLabelComponent.propTypes = {
+  children: PropTypes.element.isRequired,
+  open: PropTypes.bool.isRequired,
+  value: PropTypes.number.isRequired,
+};
 const AllJobs = () => {
   const classes = useStyle();
   const [jobsList, setJobsList] = useState([]);
@@ -109,7 +126,7 @@ const AllJobs = () => {
             boxShadow: '0px 4px 10px rgba(0 76 255 / 13%)',
             flex: 1,
             borderRadius: 2,
-            height: '80vh',
+            height: '70vh',
             position: 'sticky',
             top: 40,
           }}
@@ -133,7 +150,7 @@ const AllJobs = () => {
               className={classes.formControl}
             >
               <InputLabel id="demo-simple-select-outlined-label">
-                Job Type
+                Job Title
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -179,32 +196,61 @@ const AllJobs = () => {
             </FormControl>
           </Box>
 
-          <Box style={{ width: 290, margin: 'auto', padding:'10px 0px' }}>
-            <label style={{ fontSize: 20, color: '#646464' }}>
-              Work from home
-            </label>
+          
+
+          <Box style={{ width: 290, margin: 'auto', padding: '10px 0px' }}>
             <Checkbox
               color="primary"
               name="workFromHome"
               onChange={handleChange}
               value="uhduash"
             />
+            <label style={{ fontSize: 20, color: '#646464' }}>
+              Work from home
+            </label>
           </Box>
           {/* <hr style={{ opacity: 0.2 }} /> */}
 
-          <Box style={{ width: 290, margin: 'auto', padding:'10px 0px'}}>
-            <label style={{ fontSize: 20, color: '#646464' }}>Experience</label>
-            <Slider value={0} aria-labelledby="continuous-slider" />
+          <Box style={{ width: 290, margin: 'auto', padding: '10px 0px' }}>
+            <Checkbox
+              color="primary"
+              name="partTime"
+              onChange={handleChange}
+              value="uhduash"
+            />
+            <label style={{ fontSize: 20, color: '#646464' }}>Part-time</label>
+          </Box>
+
+          <Box style={{ width: 290, margin: 'auto', padding: '10px 0px' }}>
+            <Typography gutterBottom style={{ fontSize: 20, color: '#646464' }}>
+              Experience
+            </Typography>
+            <Slider
+              ValueLabelComponent={ValueLabelComponent}
+              aria-label="custom thumb label"
+              defaultValue={0}
+            />
           </Box>
           {/* <hr style={{ opacity: 0.2 }} /> */}
 
-          <Box style={{ width: '40%', margin: 'auto', bottom: '10px' }}>
+          <Box style={{ width: 290, margin: 'auto', padding: '10px 0px' }}>
+            <Typography gutterBottom style={{ fontSize: 20, color: '#646464' }}>
+              Minimum salary per month (₹)
+            </Typography>
+            <Slider
+              ValueLabelComponent={ValueLabelComponent}
+              aria-label="custom thumb label"
+              defaultValue={0}
+            />
+          </Box>
+
+          <Box style={{display: 'flex', justifyContent:'center'}}>
             <Button
               style={{
                 backgroundColor: '#4fadff',
                 color: 'white',
                 boxShadow: '0px 4px 10px rgba(0 76 255 / 13%)',
-                marginTop: 30,
+                marginTop: 50,
               }}
               onClick={handleClear}
             >

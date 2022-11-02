@@ -43,7 +43,7 @@ const useStyles = makeStyles({
     textDecoration: 'none',
      color: '#4fadff',
     fontSize: 22,
-    padding: 7,
+    padding: '7px 25px',
   },
 
   // job:{
@@ -96,7 +96,7 @@ const NavBar = () => {
         </Link>
 
         <Link to="/login" className={classes.link} 
-        style={{color:'white', backgroundColor:'rgb(254,200,145)', borderRadius:5, padding:'6px 15px'}}>
+        style={{color:'white', backgroundColor:'rgb(254,200,145)', borderRadius:5, padding:'6px 25px'}}>
           Login
         </Link>
       </Box>
