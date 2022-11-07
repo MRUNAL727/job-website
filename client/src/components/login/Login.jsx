@@ -39,6 +39,7 @@ const Login = () => {
 
   
     axios.post('http://localhost:8000/login', loginData).then((response) => {
+      console.log(response.data)
       if (response.data.accessToken != '') {
         const decoded = jwtDecode(response.data.accessToken);
         setMessage({ msg: response.data.msg, color: response.data.color });

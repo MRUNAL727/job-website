@@ -1,12 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   Box,
   Typography,
   makeStyles,
-  Card,
-  CardContent,
-  TextField,
   InputLabel,
   Select,
   Button,
@@ -15,13 +12,7 @@ import {
   Checkbox,
   Slider,
 } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import { Home } from '@material-ui/icons';
-import Filters from './Filters';
-import ReactPaginate from 'react-paginate';
 import Paginationx from './Pagination.js';
-import { useLocation } from 'react-router-dom';
-import SearchIcon from '@material-ui/icons/Search';
 import Job from './Job';
 import Tooltip from '@material-ui/core/Tooltip';
 import PropTypes from 'prop-types';
@@ -50,10 +41,12 @@ ValueLabelComponent.propTypes = {
 const AllJobs = () => {
   const classes = useStyle();
   const [jobsList, setJobsList] = useState([]);
-  const [filters, setFilters] = useState({});
   const [filteredJobs, setFilteredJobs] = useState([]);
-  const [checkboxValue, setCheckboxValue] = useState(true);
+  const [workFromHomeValue, setworkFromHomeValue] = useState(true);
+  const [partTimeValue, setPartTimeValue] = useState(true);
+
   const [inputLabel, setInputLabel] = useState('');
+  const [filters, setFilters] = useState({});
 
   useEffect(() => {
     const getJobs = async () => {
@@ -67,49 +60,49 @@ const AllJobs = () => {
     getJobs();
   }, []);
 
-  console.log(jobsList);
-
   useEffect(() => {
     filters &&
       setFilteredJobs(
         jobsList.filter((item) =>
-          Object.entries(filters).every(([key, value]) =>
-            item.workFromHome === false
-              ? item[key].toLowerCase().toString().includes(value)
-              : item.location === 'false' &&
-                item[key].toLowerCase().toString().includes(value)
+          Object.entries(filters).every(
+            ([key, value]) =>
+              // item.workFromHome === false
+              //   ? (item[key]).toLowerCase().includes(value)
+              //   : item.location === 'false' &&
+              item[key].toString().toLowerCase().includes(value)
+            // {console.log('key ' + item[key] + ' ' + value); }
           )
         )
       );
   }, [filters]);
-  // console.log(filters)
 
   const [showPerPage, setShowPerPage] = useState(5);
   const [pagination, setPagination] = useState({
     start: 0,
     end: showPerPage,
   });
-  console.log(pagination.start, pagination.end);
+  // console.log(pagination.start, pagination.end);
   const onPaginationChange = (start, end) => {
     setPagination({ start: start, end: end });
     // console.log(event.target.value)
   };
 
   const handleChange = (event) => {
-    console.log(checkboxValue);
+    console.log(workFromHomeValue);
     if (event.target.name === 'workFromHome') {
-      if (event.target.value === true) {
-        setCheckboxValue(false);
+      if (workFromHomeValue === true) {
+        setworkFromHomeValue(false);
       } else {
-        setCheckboxValue(true);
+        setworkFromHomeValue(true);
       }
     }
     setFilters(
-      event.target.name === 'workFromHome'
-        ? { ...filters, workFromHome: checkboxValue } && filters.location
-          ? delete filters.location
-          : ''
-        : { ...filters, [event.target.name]: event.target.value }
+      // event.target.name === 'workFromHome'
+      //   ? { ...filters, workFromHome: workFromHomeValue } && filters.location
+      //     ? delete filters.location
+      //     : ''
+      //   :
+      { ...filters, [event.target.name]: event.target.value }
     );
   };
 
@@ -196,14 +189,12 @@ const AllJobs = () => {
             </FormControl>
           </Box>
 
-          
-
           <Box style={{ width: 290, margin: 'auto', padding: '10px 0px' }}>
             <Checkbox
               color="primary"
               name="workFromHome"
+              value={workFromHomeValue}
               onChange={handleChange}
-              value="uhduash"
             />
             <label style={{ fontSize: 20, color: '#646464' }}>
               Work from home
@@ -215,8 +206,8 @@ const AllJobs = () => {
             <Checkbox
               color="primary"
               name="partTime"
+              value={partTimeValue}
               onChange={handleChange}
-              value="uhduash"
             />
             <label style={{ fontSize: 20, color: '#646464' }}>Part-time</label>
           </Box>
@@ -244,7 +235,7 @@ const AllJobs = () => {
             />
           </Box>
 
-          <Box style={{display: 'flex', justifyContent:'center'}}>
+          <Box style={{ display: 'flex', justifyContent: 'center' }}>
             <Button
               style={{
                 backgroundColor: '#4fadff',
