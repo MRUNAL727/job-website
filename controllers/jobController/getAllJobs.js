@@ -12,6 +12,7 @@ import jobsData from '../../models/jobModel.js'
          const imgStr = m.logo.data.toString('base64')
         const data = {
             jobType: m.jobType,
+            partTime:m.partTime,
             companyName:m.companyName,
             aboutCompany:m.aboutCompany,
             location:m.location,

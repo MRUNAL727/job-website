@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import {
   Box,
@@ -16,6 +16,7 @@ import Paginationx from './Pagination.js';
 import Job from './Job';
 import Tooltip from '@material-ui/core/Tooltip';
 import PropTypes from 'prop-types';
+import {filterContext} from '../../context/filter/filterContext'
 
 const useStyle = makeStyles({
   category: {
@@ -44,6 +45,7 @@ const AllJobs = () => {
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [workFromHomeValue, setworkFromHomeValue] = useState(true);
   const [partTimeValue, setPartTimeValue] = useState(true);
+  const { dispatch } = useContext(filterContext)
 
   const [inputLabel, setInputLabel] = useState('');
   const [filters, setFilters] = useState({});
@@ -102,7 +104,10 @@ const AllJobs = () => {
       //     ? delete filters.location
       //     : ''
       //   :
-      { ...filters, [event.target.name]: event.target.value }
+
+
+      // { ...filters, [event.target.name]: event.target.value }
+      dispatch({action:'SET_FILTERS', payload:{ ...filters, [event.target.name]: event.target.value }})
     );
   };
 
