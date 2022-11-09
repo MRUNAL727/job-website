@@ -1,10 +1,10 @@
-const Reducer = (state, action)=>{
+export const filterReducer = (state, action)=>{
 
     switch(action.type){
-        case "SET_FILTER":{
+        case "SET_FILTERS":{
            return {filters: action.payload}
         }
-        case "CLEAR_FILTER":{
+        case "CLEAR_FILTERS":{
             return {filters:null}
         }
         default: return state;

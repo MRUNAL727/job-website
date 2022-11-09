@@ -32,7 +32,7 @@ const Login = () => {
   };
 
   const handleCancel = () => {
-    navigate('/');
+    navigate('/post-job');
   };
 
   const handleClick = (event) => {

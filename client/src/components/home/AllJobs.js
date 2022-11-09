@@ -45,7 +45,7 @@ const AllJobs = () => {
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [workFromHomeValue, setworkFromHomeValue] = useState(true);
   const [partTimeValue, setPartTimeValue] = useState(true);
-  const { dispatch } = useContext(filterContext)
+  // const { dispatch } = useContext(filterContext)
 
   const [inputLabel, setInputLabel] = useState('');
   const [filters, setFilters] = useState({});
@@ -63,6 +63,10 @@ const AllJobs = () => {
   }, []);
 
   useEffect(() => {
+
+    console.log(filters);
+    // dispatch({action:'SET_FILTERS', payload:'ofsd'})
+
     filters &&
       setFilteredJobs(
         jobsList.filter((item) =>
@@ -89,7 +93,7 @@ const AllJobs = () => {
     // console.log(event.target.value)
   };
 
-  const handleChange = (event) => {
+  const handleChange =async (event) => {
     console.log(workFromHomeValue);
     if (event.target.name === 'workFromHome') {
       if (workFromHomeValue === true) {
@@ -106,9 +110,9 @@ const AllJobs = () => {
       //   :
 
 
-      // { ...filters, [event.target.name]: event.target.value }
-      dispatch({action:'SET_FILTERS', payload:{ ...filters, [event.target.name]: event.target.value }})
+      { ...filters, [event.target.name]: event.target.value }
     );
+
   };
 
   const handleClear = () => {
@@ -259,7 +263,8 @@ const AllJobs = () => {
           {filteredJobs.length > 0
             ? filteredJobs
                 .slice(pagination.start, pagination.end)
-                .map((job) => <Job job={job} key={job._id} />)
+                .map((job) => <Job job={job} key={job._id} />
+                )
             : Object.keys(filters).length === 0 &&
               jobsList &&
               jobsList

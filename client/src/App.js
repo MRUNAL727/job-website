@@ -23,6 +23,7 @@ function App() {
   const filters = useContext(filterContext);
 
   useEffect(() => {}, [company.company]);
+  useEffect(() => {}, [filters.filters])
   // console.log(company.company)
   return (
     <BrowserRouter>
