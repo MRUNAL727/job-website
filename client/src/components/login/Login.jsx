@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { companyContext } from '../../context/company/companyContext';
 import jwtDecode from 'jwt-decode';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import PostJob from '../job/PostJob';
 import './login.css';
@@ -35,8 +35,10 @@ const Login = () => {
     navigate('/post-job');
   };
 
-  const handleClick = (event) => {
+ console.log(location.pathname)
 
+
+  const handleClick = (event) => {
   
     axios.post('http://localhost:8000/login', loginData).then((response) => {
       console.log(response.data)
@@ -48,7 +50,13 @@ const Login = () => {
 
         if (decoded.email) {
           dispatch({ type: 'LOGIN_SUCCESS', payload: decoded.email });
-          navigate('/');
+          if(location.pathname === '/post-job')
+          {
+            navigate('/post-job')
+          }
+          else{
+            navigate('/')
+          }
           window.location.reload();
         } else {
           dispatch({ type: 'LOGIN_FAILURE' });
@@ -115,15 +123,18 @@ const Login = () => {
               Login
             </button>
           </Box>
+
+          <Box style={{margin:20,  width: '70%'}}>
+            <Link to='/register/company' style={{color:'#4fadff'}}>Create new account</Link>
+          </Box>
         </Box>
 
         <div className="imgContainer">
           <img src="images/companyLogin.jpg" className="img" />
         </div>
-        {/* {  
-          (location === '/post-job' && company.company) ? <PostJob /> : '' 
-        }
-    */}
+        
+        
+  
       </div>
     </Box>
   );

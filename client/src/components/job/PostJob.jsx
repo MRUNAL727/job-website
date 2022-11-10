@@ -43,6 +43,8 @@ const PostJob = () => {
   const [logo, setLogo] = useState();
   const [workFromHome, setworkFromHome] = useState(false);
   const [location, setLocation] = useState('');
+  const [experience, setExperience] = useState('');
+
 
   // const [job, setJob] =  useState({
   //     jobType: '',

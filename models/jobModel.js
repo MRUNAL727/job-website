@@ -18,6 +18,10 @@ const jobSchema = new mongoose.Schema(
       type: Boolean,
     },
 
+    experience: {
+      type: String,
+      required: true,
+    },
     jobDiscription: {
       type: String,
       required: true,

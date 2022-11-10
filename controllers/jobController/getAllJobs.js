@@ -20,6 +20,7 @@ import jobsData from '../../models/jobModel.js'
             skillsRequired:m.skillsRequired,
             whoCanApply: m.whoCanApply,
             perks:m.perks,
+            experience:m.experience,
             noOfOpenings:m.noOfOpenings,
             startDate:m.startDate,
             duration:m.duration,

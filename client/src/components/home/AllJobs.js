@@ -16,7 +16,7 @@ import Paginationx from './Pagination.js';
 import Job from './Job';
 import Tooltip from '@material-ui/core/Tooltip';
 import PropTypes from 'prop-types';
-import {filterContext} from '../../context/filter/filterContext'
+import { filterContext } from '../../context/filter/filterContext';
 
 const useStyle = makeStyles({
   category: {
@@ -63,7 +63,6 @@ const AllJobs = () => {
   }, []);
 
   useEffect(() => {
-
     console.log(filters);
     // dispatch({action:'SET_FILTERS', payload:'ofsd'})
 
@@ -93,7 +92,7 @@ const AllJobs = () => {
     // console.log(event.target.value)
   };
 
-  const handleChange =async (event) => {
+  const handleChange = async (event) => {
     console.log(workFromHomeValue);
     if (event.target.name === 'workFromHome') {
       if (workFromHomeValue === true) {
@@ -109,10 +108,8 @@ const AllJobs = () => {
       //     : ''
       //   :
 
-
       { ...filters, [event.target.name]: event.target.value }
     );
-
   };
 
   const handleClear = () => {
@@ -222,18 +219,31 @@ const AllJobs = () => {
           </Box>
 
           <Box style={{ width: 290, margin: 'auto', padding: '10px 0px' }}>
-            <Typography gutterBottom style={{ fontSize: 20, color: '#646464' }}>
-              Experience
-            </Typography>
-            <Slider
-              ValueLabelComponent={ValueLabelComponent}
-              aria-label="custom thumb label"
-              defaultValue={0}
-            />
+            <FormControl
+              variant="outlined"
+              style={{ width: '100%' }}
+              className={classes.formControl}
+            >
+              <InputLabel id="demo-simple-select-outlined-label">
+                Experience
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                onChange={handleChange}
+                className={classes.category}
+                name="experience"
+                style={{ width: '100%' }}
+              >
+                <MenuItem value="beginner">Beginner</MenuItem>
+                <MenuItem value="intermediate">Intermediate</MenuItem>
+                <MenuItem value="expert">Expert</MenuItem>
+              </Select>
+            </FormControl>
           </Box>
           {/* <hr style={{ opacity: 0.2 }} /> */}
 
-          <Box style={{ width: 290, margin: 'auto', padding: '10px 0px' }}>
+          {/* <Box style={{ width: 290, margin: 'auto', padding: '10px 0px' }}>
             <Typography gutterBottom style={{ fontSize: 20, color: '#646464' }}>
               Minimum salary per month (₹)
             </Typography>
@@ -242,7 +252,7 @@ const AllJobs = () => {
               aria-label="custom thumb label"
               defaultValue={0}
             />
-          </Box>
+          </Box> */}
 
           <Box style={{ display: 'flex', justifyContent: 'center' }}>
             <Button
@@ -263,8 +273,7 @@ const AllJobs = () => {
           {filteredJobs.length > 0
             ? filteredJobs
                 .slice(pagination.start, pagination.end)
-                .map((job) => <Job job={job} key={job._id} />
-                )
+                .map((job) => <Job job={job} key={job._id} />)
             : Object.keys(filters).length === 0 &&
               jobsList &&
               jobsList
