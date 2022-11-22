@@ -35,30 +35,32 @@ const Login = () => {
     navigate('/post-job');
   };
 
- console.log(location.pathname)
-
+  console.log(location.pathname);
 
   const handleClick = (event) => {
-  
     axios.post('/login', loginData).then((response) => {
-      console.log(response.data)
+      console.log(response.data);
       if (response.data.accessToken != '') {
         const decoded = jwtDecode(response.data.accessToken);
-        setMessage({ msg: response.data.msg, color: response.data.color });
-        console.log(response.data.accessToken);
+        // setMessage({ msg: response.data.msg, color: response.data.color });
+        // console.log(response.data.accessToken);
         dispatch({ type: 'LOGIN_START' });
 
         if (decoded.email) {
           dispatch({ type: 'LOGIN_SUCCESS', payload: decoded.email });
-          if(location.pathname === '/post-job')
-          {
-            navigate('/post-job')
-          }
-          else{
-            navigate('/')
+          setMessage({ msg: response.data.msg, color: response.data.color });
+
+          if (location.pathname === '/post-job') {
+            setMessage({ msg: response.data.msg, color: response.data.color });
+
+            navigate('/post-job');
+          } else {
+            navigate('/');
           }
           window.location.reload();
         } else {
+          setMessage({ msg: response.data.msg, color: response.data.color });
+
           dispatch({ type: 'LOGIN_FAILURE' });
           navigate('/login');
           console.log('else');
@@ -124,17 +126,16 @@ const Login = () => {
             </button>
           </Box>
 
-          <Box style={{margin:20,  width: '70%'}}>
-            <Link to='/register/company' style={{color:'#4fadff'}}>Create new account</Link>
+          <Box style={{ margin: 20, width: '70%' }}>
+            <Link to="/register/company" style={{ color: '#4fadff' }}>
+              Create new account
+            </Link>
           </Box>
         </Box>
 
         <div className="imgContainer">
           <img src="images/companyLogin.jpg" className="img" />
         </div>
-        
-        
-  
       </div>
     </Box>
   );
