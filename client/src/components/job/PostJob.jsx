@@ -6,6 +6,7 @@ import {
   MenuItem,
   Checkbox,
   Button,
+  FormControl,
   FormControlLabel,
   InputLabel,
 } from '@material-ui/core';
@@ -114,7 +115,6 @@ const PostJob = () => {
     formData.append('perks', perks);
     formData.append('noOfOpenings', noOfOpenings);
     formData.append('startDate', startDate);
-    formData.append('duration', duration);
     formData.append('stipend', stipend);
     formData.append('applyBy', applyBy);
     formData.append('email', email);
@@ -122,10 +122,12 @@ const PostJob = () => {
     formData.append('workFromHome', workFromHome);
   };
 
+  console.log(jobType)
+
   const submit = async () => {
     appendData();
-    await axios.post('http://localhost:8000/post-job', formData);
-    // .then(navigate('/'))
+    const res = await axios.post('/post-job', formData);
+    console.log(res)
   };
 
   // const handleLocation= (event)=>{
@@ -160,9 +162,7 @@ const PostJob = () => {
   const handlestatrDate = (event) => {
     setstartDate(event.target.value);
   };
-  const handleduration = (event) => {
-    setduration(event.target.value);
-  };
+  
   const handlestipend = (event) => {
     setstipend(event.target.value);
   };
@@ -204,18 +204,33 @@ const PostJob = () => {
 
       <Box style={{ display: 'block', padding: '10px 50px' }}>
         <Box style={{ display: 'flex', width: '100%' }}>
-          <TextField
-            id="outlined-basic"
-            label="Job type"
-            variant="outlined"
-            style={{
-              flex: 1,
-              boxShadow: '0px 4px 10px rgba(0 76 255 /5%)',
-              margin: '10px',
-            }}
-            onChange={handlejobType}
-            name="jobType"
-          />
+        <Box style={{ padding: '', width: 300, margin: '10px auto' }}>
+            {/* <InputLabel>Job Type</InputLabel> */}
+            <FormControl
+              variant="outlined"
+              style={{ width: '100%' }}
+            >
+              <InputLabel id="demo-simple-select-outlined-label">
+                Job Title
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                name="jobType"
+                onChange={handlejobType}
+                style={{ width: '100%' }}
+              >
+                <MenuItem value={'web development'}>Web development</MenuItem>
+                <MenuItem value={'nodejs'}>Node js</MenuItem>
+                <MenuItem value={'backend development'}>
+                  Backend development
+                </MenuItem>
+                <MenuItem value={'full stack development'}>
+                  Full stack development
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
 
           <TextField
             id="outlined-basic"
@@ -245,19 +260,7 @@ const PostJob = () => {
             variant="outlined"
             onChange={handlestatrDate}
           />
-          <TextField
-            style={{
-              flex: 1,
-              boxShadow: '0px 4px 10px rgba(0 76 255 /5%)',
-              margin: '10px',
-            }}
-            id="outlined-basic"
-            label="Duration"
-            required
-            name="duration"
-            variant="outlined"
-            onChange={handleduration}
-          />
+          
           <TextField
             style={{
               flex: 1,

@@ -31,7 +31,7 @@ const JobDetails=()=>{
     const {_id} = useParams();
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/job-details/${_id}`).then((job)=>{
+        axios.get(`/job-details/${_id}`).then((job)=>{
           setJob(job.data);
         })
       },[])
@@ -64,10 +64,6 @@ const JobDetails=()=>{
                        }
                        <Box style={{display:'flex', width:'80%', padding:5}}>
                            
-                           <Box className={classes.smallBox}>
-                               <Typography style={{color: 'grey', display:'flex'}}>Duration</Typography>
-                               <Typography style={{paddingRight:15, color:'black'}}>{job.duration}</Typography>
-                           </Box>
                            <Box className={classes.smallBox}>
                                <Typography style={{color: 'grey'}}>Salary</Typography>
                                <Typography style={{paddingRight:15, color:'black'}}>{job.stipend}</Typography>

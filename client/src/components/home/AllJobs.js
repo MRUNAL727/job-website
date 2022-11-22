@@ -53,7 +53,7 @@ const AllJobs = () => {
   useEffect(() => {
     const getJobs = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/all-jobs`);
+        const res = await axios.get(`/all-jobs`);
         setJobsList(res.data);
       } catch (error) {
         console.log(error);

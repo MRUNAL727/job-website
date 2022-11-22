@@ -14,6 +14,8 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 const UserLogin = () => {
   const [err, setErr] = useState('');
+  // const [showPassword, setShowPassword] = useState(false);
+  const [passwordType, setPasswordType] = useState('password')
 
   const [company, setCompany] = useState({
     name: '',
@@ -29,7 +31,7 @@ const UserLogin = () => {
   const createCompany = async () => {
     try {
       await axios
-        .post('http://localhost:8000/register/company', company)
+        .post('/register/company', company)
         .then((response) => {
           if (response.status === 200) {
             //   arr.push('Registered successfully')
@@ -42,6 +44,17 @@ const UserLogin = () => {
       console.log('error');
     }
   };
+
+  const handleClick = (event) => {
+  
+      if(passwordType==="password")
+      {
+       setPasswordType("text")
+       return;
+      }
+      setPasswordType("password")
+    
+  }
 
   return (
     <Box
@@ -141,16 +154,18 @@ const UserLogin = () => {
             <TextField
               label="Password"
               // variant="outlined"
-              type="password"
+              type = {passwordType}
               required
               onChange={handleChange}
               name="password"
+              InputProps={{ disableUnderline: true }}
               style={{
                 outline: 'none',
                 border: 'none',
+                width:'100%'
               }}
             />
-            <VisibilityOffIcon />
+            <VisibilityOffIcon onClick={handleClick} style={{}}/>
           </Box>
 
           <Button

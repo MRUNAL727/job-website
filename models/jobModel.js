@@ -18,10 +18,6 @@ const jobSchema = new mongoose.Schema(
       type: Boolean,
     },
 
-    experience: {
-      type: String,
-      required: true,
-    },
     jobDiscription: {
       type: String,
       required: true,
@@ -31,10 +27,6 @@ const jobSchema = new mongoose.Schema(
     perks: String,
     noOfOpenings: String,
     startDate: {
-      type: String,
-      required: true,
-    },
-    duration: {
       type: String,
       required: true,
     },

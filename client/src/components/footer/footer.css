@@ -9,6 +9,11 @@
   /* border:1px solid #c2c1c1; */
 }
 
+@media(max-width: 400px){
+   .footerContainer{
+    width: 100%;
+   }
+}
 .footerContainer {
   display: flex;
   width: 40%;

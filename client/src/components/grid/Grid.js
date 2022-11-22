@@ -8,15 +8,9 @@ const Grid = () => {
   return (
     <div
       style={{
-        display: 'flex',
-        backgroundColor: '#fef9f4',
-        width: '60%',
-        margin: '60px auto',
-        padding: 30,
-        height: 300,
-        position: 'relative',
-        borderRadius: '16px 6px'
+        
       }}
+      className='gridContainer'
     >
       <div style={{padding:'10px 50px'}}>
         <img src="https://static.naukimg.com/s/0/0/i/role-collection.png" />

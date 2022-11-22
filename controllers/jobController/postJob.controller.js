@@ -15,7 +15,7 @@ const postJob= async(req, res, next)=>{
         perks:req.body.perks,
         noOfOpenings:req.body.noOfOpenings,
         startDate:req.body.startDate,
-        duration:req.body.duration,
+        
         stipend:req.body.stipend,
         applyBy:req.body.applyBy,
         email:req.body.email,
@@ -26,16 +26,13 @@ const postJob= async(req, res, next)=>{
      jobData.logo.contentType = req.files.logo.mimetype;
      jobData.save(function(err) {
         if (err) { return next(err); }
-        res.redirect("/");
+        res.status(200).json({message:'Job posted successfully'});
     });
      
-    // try{
-    //     const newJob = await jobData.save();
-    //     console.log(newJob);
-    // }
   }
     catch(err){
         console.log(err);
+        res.send(err)
     }
 }
 
