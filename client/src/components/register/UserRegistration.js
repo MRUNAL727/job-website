@@ -53,7 +53,7 @@ const UserRegistration=()=>{
 
    const createUser= async()=>{
       try{
-        await axios.post('/login/user', user).then(
+        await axios.post('/api/login/user', user).then(
            navigate('/')
         ) 
       }

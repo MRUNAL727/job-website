@@ -39,7 +39,7 @@ const Login = () => {
 
  console.log(loggedin)
   const handleClick = (event) => {
-    axios.post('/login', loginData).then((response) => {
+    axios.post('/api/login', loginData).then((response) => {
       if (response.status === 200) {
         setMessage(response.data.msg);
         dispatch(LOGIN_SUCCESS())

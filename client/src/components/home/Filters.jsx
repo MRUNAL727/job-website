@@ -36,7 +36,7 @@ const Filters = () => {
   useEffect(() => {
     const getJobs = async () => {
       try {
-        const res = await axios.get(`/all-jobs`);
+        const res = await axios.get(`/api/all-jobs`);
 
         setJobsList(res.data);
       } catch (error) {
@@ -61,7 +61,7 @@ const Filters = () => {
       // if(Object.keys(query).length != 0){
       if (query) {
         const response = await axios.get(
-          `http://localhost:8000/api/all-jobs?${query}`
+          `/api/all-jobs?${query}`
         );
         console.log(response.data.length);
         if (response.data.length === 0) {

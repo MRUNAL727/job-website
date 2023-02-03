@@ -41,7 +41,7 @@ const AllJobs = () => {
   useEffect(() => {
     const getJobs = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/all-jobs`);
+        const res = await axios.get(`/api/all-jobs`);
         setJobsList(res.data);
         // dispatch(addJobs(res.data))
         console.log(res.data);
@@ -55,7 +55,7 @@ const AllJobs = () => {
   useEffect(() => {
     const getJobs = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/all-jobs`);
+        const res = await axios.get(`/api/all-jobs`);
         setJobsList(res.data);
         // dispatch(addJobs(res.data))
         console.log(res.data);

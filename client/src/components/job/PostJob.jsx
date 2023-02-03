@@ -126,7 +126,7 @@ const PostJob = () => {
 
   const submit = async () => {
     appendData();
-    const res = await axios.post('/post-job', formData);
+    const res = await axios.post('/api/post-job', formData);
     console.log(res)
   };
 
