@@ -19,9 +19,6 @@ const companySchema = mongoose.Schema({
         type: String,
         require:true
     },
-    refreshToken:{
-        type:String
-    }
 })
 
 // companySchema.pre('save', async function (next) {

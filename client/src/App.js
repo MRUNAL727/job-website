@@ -8,28 +8,15 @@ import PostJob from './components/job/PostJob.jsx';
 import JobDetails from './components/job/JobDetails.jsx';
 import CompanyRegistration from './components/register/CompanyRegistration.js';
 import Login from './components/login/Login';
-import { companyContext } from './context/company/companyContext.js';
-import { useContext, useEffect } from 'react';
-import { ContextProvider } from './context/company/companyContext';
-import { Navigate } from 'react-router-dom';
 import AllJobs from './components/home/AllJobs';
-import {
-  filterContext,
-  FilterContextProvider,
-} from './context/filter/filterContext';
+import { useSelector} from 'react-redux';
 
 function App() {
-  const company = useContext(companyContext);
-  const filters = useContext(filterContext);
-
-  useEffect(() => {}, [company.company]);
-  useEffect(() => {}, [filters.filters])
-  // console.log(company.company)
+  const companyIsLoggedin = useSelector((state) => state.company.isLoggedin)
   return (
     <BrowserRouter>
-      <ContextProvider>
+      {/* <ContextProvider> */}
         <NavBar />
-        <FilterContextProvider>
           <Routes>
             <Route exact path="/" element={<Home />} />
 
@@ -40,15 +27,14 @@ function App() {
             <Route path="/login/user" element={<UserRegistration />} />
             <Route
               path="/post-job"
-              element={company.company === null ? <Login /> : <PostJob />}
+              element={companyIsLoggedin === false ? <Login /> : <PostJob />}
             />
             {/* <Route path='/post-job' element={<PostJob />} /> */}
             <Route path="/job-details/:_id" element={<JobDetails />} />
             <Route path="/register/company" element={<CompanyRegistration />} />
             <Route path="/login" element={<Login />} />
           </Routes>
-        </FilterContextProvider>
-      </ContextProvider>
+      {/* </ContextProvider> */}
     </BrowserRouter>
   );
 }

@@ -72,13 +72,13 @@ const Job = ({ job }) => {
                     </Box>
                   </Box>
                   <Box style={{ marginLeft: 'auto' }}>
-                    <img
+                    {/* <img
                       src={`data:${job.image.contentType};base64, ${job.image.logo}`}
                       alt="logo"
                       height="70px"
                       width="70px"
                       style={{ borderRadius: '50%' }}
-                    ></img>
+                    ></img> */}
                   </Box>
                 </Box>
 

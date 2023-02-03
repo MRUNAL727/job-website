@@ -43,7 +43,7 @@ app.use(fileupload());
 
 const database_url = process.env.MONGO_URL
 
-app.use('/', routes)
+app.use('/api', routes)
 
 if(process.env.NODE_ENV= 'production'){
     app.use(express.static(path.join( __dirname ,"/client/build")))

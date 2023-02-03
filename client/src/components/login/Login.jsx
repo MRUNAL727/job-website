@@ -2,7 +2,7 @@ import { Box, TextField, Typography, Button } from '@material-ui/core';
 import axios from 'axios';
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { companyContext } from '../../context/company/companyContext';
+// import { companyContext } from '../../context/company/companyContext';
 import jwtDecode from 'jwt-decode';
 import { useLocation, Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
@@ -11,16 +11,18 @@ import './login.css';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { useDispatch, useSelector } from 'react-redux';
+import { LOGIN_SUCCESS } from '../../context/company/companySlice';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { dispatch } = useContext(companyContext);
-  const company = useContext(companyContext);
+  const dispatch = useDispatch();
   let location = useLocation();
-  const [message, setMessage] = useState({
-    msg: '',
-    color: '',
-  });
+  const loggedin = useSelector((state)=> state.company.isLoggedin)
+  const [message, setMessage] = useState(
+    // msg: '',
+    // color: ''
+  );
 
   const [loginData, setLoginData] = useState({
     email: '',
@@ -35,36 +37,13 @@ const Login = () => {
     navigate('/post-job');
   };
 
-  console.log(location.pathname);
-
+ console.log(loggedin)
   const handleClick = (event) => {
     axios.post('/login', loginData).then((response) => {
-      console.log(response.data);
-      if (response.data.accessToken != '') {
-        const decoded = jwtDecode(response.data.accessToken);
-        // setMessage({ msg: response.data.msg, color: response.data.color });
-        // console.log(response.data.accessToken);
-        dispatch({ type: 'LOGIN_START' });
-
-        if (decoded.email) {
-          dispatch({ type: 'LOGIN_SUCCESS', payload: decoded.email });
-          setMessage({ msg: response.data.msg, color: response.data.color });
-
-          if (location.pathname === '/post-job') {
-            setMessage({ msg: response.data.msg, color: response.data.color });
-
-            navigate('/post-job');
-          } else {
-            navigate('/');
-          }
-          window.location.reload();
-        } else {
-          setMessage({ msg: response.data.msg, color: response.data.color });
-
-          dispatch({ type: 'LOGIN_FAILURE' });
-          navigate('/login');
-          console.log('else');
-        }
+      if (response.status === 200) {
+        setMessage(response.data.msg);
+        dispatch(LOGIN_SUCCESS())
+        navigate(-1)
       }
     });
   };
@@ -87,9 +66,7 @@ const Login = () => {
             Login
           </Typography>
           <AccountCircleIcon className="loginIcon" style={{ fontSize: 50 }} />
-          <Typography style={{ color: message.color }}>
-            {message.msg}
-          </Typography>
+          {message && <Typography style={{}}>{message}</Typography>}
           <Box>
             <div className="inputDiv">
               <MailOutlineIcon className="icon" />

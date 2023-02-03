@@ -4,7 +4,7 @@ import postJob from '../controllers/jobController/postJob.controller.js'
 import getAllJobs from '../controllers/jobController/getAllJobs.js'
 import getJobDetails from '../controllers/jobController/getJobDetails.js'
 import {companyRegistration} from '../controllers/userControllers/companyRegistration.js'
-import {postLogin, getLogin} from '../controllers/loginController.js'
+import {postLogin} from '../controllers/loginController.js'
 
 const router = express.Router();
 
@@ -14,9 +14,8 @@ router.post('/post-job', postJob);
 router.get('/all-jobs', getAllJobs);
 router.get('/job-details/:_id', getJobDetails)
 router.post('/register/company', companyRegistration);
-router.get('/login', getLogin );
 router.post('/login', postLogin);
-
+// router.get('/jobs/q=')
 
 
 export default router;

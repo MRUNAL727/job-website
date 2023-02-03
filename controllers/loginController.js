@@ -1,43 +1,47 @@
-import companyModel from "../models/companyModel.js"
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+import companyModel from '../models/companyModel.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
-export const getLogin=()=>{
-  // ensureLoggedOut({ redirectTo: '/' }),
-  async (req, res, next) => {
-    // res.render('login');
-    res.send('Logged in')
-
-  }
-}
-
-export const postLogin=async(req,res)=>{
-      const email = req.body.email;
-    try{
-      const company = await companyModel.findOne({email})
-      if(!company) return res.json({msg:'Email not found.', color:'red', accessToken:''})
-      const match = await bcrypt.compare(req.body.password, company.password)
-
-      if(!match) return res.json({msg:'Wrong email or password', color:'red', accessToken:''})
-
-      const accessToken = jwt.sign({email:company.email}, process.env.ACCESS_TOKEN,{
-        expiresIn: '1min'
-      })  
-      
-      const refreshToken = jwt.sign({email:company.email}, process.env.REFRESH_TOKEN, {
-        expiresIn: '10d'
-      })
-      
-      await companyModel.updateOne({_id: company._id}, {$set:{refreshToken: refreshToken}});
-        res.cookie('refreshToken', refreshToken,{
-            httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000
+export const postLogin = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const company = await companyModel.findOne({ email: email });
+    if (!company) {
+      return res.status(400).json({ msg: 'Company not found please register' });
+    } else {
+      const check = await bcrypt.compare(password, company.password);
+      if (!check) {
+        return res.status(400).json({ msg: 'Incorrect email or password' });
+      } else {
+        const token = jwt.sign(
+          { id: company._id },
+          process.env.JWT_SECRETE_KEY,
+          {
+            expiresIn: '30s',
+          }
+        );
+        res.cookie(String(company._id), token, {
+          path: '/',
+          expires: new Date(Date.now() + 1000 * 30), // 30 seconds
+          httpOnly: true,
+          sameSite: 'lax',
         });
-        res.json({ accessToken:accessToken, msg:'Log in successfull', color:'green' });
-      
-    }catch(error){
-        console.log(error)
+
+        return res
+          .status(200)
+          .json({
+            msg: 'Logged in successfully',
+            data: {
+              _id: company._id,
+              name: company.name,
+              email: company.email,
+              phone: company.phone,
+            },
+          });
+      }
     }
-
-}
-
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ msg: 'Something went wrong' });
+  }
+};

@@ -15,8 +15,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { useContext } from 'react';
-import { ContextProvider } from '../../context/company/companyContext';
-import { companyContext } from '../../context/company/companyContext.js';
+// import { ContextProvider } from '../../context/company/companyContext';
+// import { companyContext } from '../../context/company/companyContext.js';
 import { AddPhotoAlternate } from '@material-ui/icons';
 
 const PostJob = () => {
@@ -26,7 +26,7 @@ const PostJob = () => {
   // let category= [ ];
   const [category, setCategory] = useState([]);
 
-  const company = useContext(companyContext);
+  // const company = useContext(companyContext);
 
   const [jobType, setJobType] = useState('');
   const [companyName, setcompanyName] = useState('');

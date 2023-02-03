@@ -14,7 +14,7 @@ import clsx from 'clsx';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import { useNavigate } from 'react-router';
 import './navbar.css';
-
+import { useSelector } from 'react-redux';
 const useStyles = makeStyles({
   navElements: {
     display: 'flex',
@@ -56,6 +56,7 @@ const NavBar = () => {
   const classes = useStyles();
   const Navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const loggedin = useSelector((state)=> state.company.isLoggedin)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -95,10 +96,17 @@ const NavBar = () => {
           Post Job
         </Link>
 
-        <Link to="/login" className={classes.link} 
+       {!loggedin && <Link to="/login" className={classes.link} 
         style={{color:'white', backgroundColor:'rgb(254,200,145)', borderRadius:5, padding:'6px 25px'}}>
           Login
         </Link>
+       }
+       {
+         loggedin && <Link to="/" className={classes.link} 
+        style={{color:'white', backgroundColor:'rgb(254,200,145)', borderRadius:5, padding:'6px 25px'}}>
+          Logout
+        </Link>
+       }
       </Box>
     </AppBar>
   );
